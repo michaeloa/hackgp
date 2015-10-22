@@ -102,15 +102,18 @@ public class tiny_gp {
 		double result, fit = 0.0;
 
 		len = traverse(Prog, 0);
+		int failures = 0;
 		for (i = 0; i < fitnesscases; i++) {
 			for (int j = 0; j < varnumber; j++)
 				x[j] = targets[i][j];
 			program = Prog;
 			PC = 0;
 			result = run();
-			fit += Math.abs(result - targets[i][varnumber]);
+			if (Math.abs(result - targets[i][varnumber]) > 0.1) {
+				failures++;
+			}
 		}
-		return (-fit);
+		return ((double)failures/(double)fitnesscases);
 	}
 
 	int grow(char[] buffer, int pos, int max, int depth) {
