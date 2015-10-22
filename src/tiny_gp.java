@@ -109,7 +109,7 @@ public class tiny_gp {
 			program = Prog;
 			PC = 0;
 			result = run();
-			if (Math.abs(result - targets[i][varnumber]) > 0.499) {
+			if (Math.abs(result - targets[i][varnumber]) > 0.1) {
 				failures++;
 			}
 		}
