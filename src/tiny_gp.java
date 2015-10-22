@@ -358,6 +358,8 @@ public class tiny_gp {
     for ( gen = 1; gen < GENERATIONS; gen ++ ) {
       if (  fbestpop > -1e-5 ) {
       System.out.print("PROBLEM SOLVED\n");
+      		elapsedTimeNano = System.nanoTime()-start;
+		System.out.print("Input, datacreation, computation & output completeded in " + elapsedTimeNano/1000000 + " milliseconds.");
       System.exit( 0 );
       }
       for ( indivs = 0; indivs < POPSIZE; indivs ++ ) {
@@ -378,10 +380,18 @@ public class tiny_gp {
       stats( fitness, pop, gen );
     }
     System.out.print("PROBLEM *NOT* SOLVED\n");
-    System.exit( 1 );
+    elapsedTimeNano = System.nanoTime()-start;
+	System.out.print("Input, computation & output completeded in " + elapsedTimeNano/1000000 + " milliseconds.");
+	System.exit( -1 );
   }
 
+	static long start; /*These variables are here because Im lazy*/
+	static long elapsedTimeNano;
+
   public static void main(String[] args) {
+
+	start = System.nanoTime();
+	
     String fname = "problem.dat";
     long s = -1;
     
@@ -397,4 +407,3 @@ public class tiny_gp {
     gp.evolve();
   }
 };
-
