@@ -109,11 +109,11 @@ public class tiny_gp {
 			program = Prog;
 			PC = 0;
 			result = run();
-			if (Math.abs(result - targets[i][varnumber]) > 0.1) {
+			if (Math.abs(result - targets[i][varnumber]) > 0.05) {
 				failures++;
 			}
 		}
-		return ((double)failures/(double)fitnesscases);
+		return -((double)failures/(double)fitnesscases);
 	}
 
 	int grow(char[] buffer, int pos, int max, int depth) {
