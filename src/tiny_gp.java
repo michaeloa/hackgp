@@ -7,6 +7,9 @@
  */
 
 import java.util.*;
+
+import no.met.precipitationDetection.tiny_gp;
+
 import java.io.*;
 import java.text.DecimalFormat;
 
